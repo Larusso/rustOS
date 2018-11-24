@@ -12,13 +12,3 @@ fn panic(_info: &PanicInfo) -> ! {
 pub extern "C" fn _start() -> ! {
     loop {}
 }
-
-#[no_mangle]
-pub extern "C" fn mainCRTStartup() -> ! {
-    main();
-}
-
-#[no_mangle]
-pub extern "C" fn main() -> ! {
-    loop {}
-}
