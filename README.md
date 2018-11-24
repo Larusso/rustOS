@@ -12,6 +12,8 @@ Build
 * install [QEMO](https://www.qemu.org/download/)
 * install rust nightly
   `rustup update nightly`
+* add rust source component
+  `rustup component add rust-src`
 * install xbuild
   `cargo install cargo-xbuild`
 * install bootimage

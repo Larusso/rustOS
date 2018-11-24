@@ -1,0 +1,22 @@
+language: rust
+dist: xenial
+os:
+  - osx
+  - linux
+  - windows
+
+before_install:
+  - set -e
+  - rustup update nightly
+
+install:
+  - cargo install cargo-xbuild
+  - cargo install bootimage --version "^0.5.0"
+  - rustup component add rust-src
+
+script:
+  - bootimage build
+
+cache: cargo
+before_cache:
+  - chmod -R a+r $HOME/.cargo
