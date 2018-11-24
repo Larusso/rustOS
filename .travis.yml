@@ -10,9 +10,9 @@ before_install:
   - rustup update nightly
 
 install:
-  - cargo install cargo-xbuild
-  - cargo install bootimage --version "^0.5.0"
-  - rustup component add rust-src
+  - cargo install cargo-xbuild | true
+  - cargo install bootimage --version "^0.5.0" | true
+  - rustup component add rust-src | true
 
 script:
   - bootimage build
