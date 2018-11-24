@@ -1,6 +1,8 @@
 #![no_std]
 #![no_main]
 
+extern crate volatile;
+
 use core::panic::PanicInfo;
 mod vga_buffer;
 
