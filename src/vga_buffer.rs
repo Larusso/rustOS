@@ -1,4 +1,5 @@
 use volatile::Volatile;
+use core::fmt::{self, Write};
 
 #[allow(dead_code)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
@@ -88,6 +89,13 @@ impl Writer {
     }
 }
 
+impl fmt::Write for Writer {
+    fn write_str(&mut self, s: &str) -> fmt::Result {
+        self.write_string(s);
+        Ok(())
+    }
+}
+
 pub fn print_something() {
     let mut writer = Writer {
         column_position: 0,
@@ -95,7 +103,5 @@ pub fn print_something() {
         buffer: unsafe { &mut *(0xb8000 as *mut Buffer) },
     };
 
-    writer.write_byte(b'W');
-    writer.write_string("elcome ");
-    writer.write_string("to RüstÖS");
+    write!(writer, "Welcome to RustOS {}", "0.1.0").unwrap();
 }
