@@ -15,8 +15,8 @@ fn panic(_info: &PanicInfo) -> ! {
 
 #[no_mangle]
 pub extern "C" fn _start() -> ! {
-    use core::fmt::Write;
-    vga_buffer::WRITER.lock().write_str("Welcome to RustOS").unwrap();
-    write!(vga_buffer::WRITER.lock(), ", version: {}", "0.1.0").unwrap();
+    println!("Welcome to RustOS");
+    println!("Version: {}", "0.1.0");
+
     loop {}
 }
