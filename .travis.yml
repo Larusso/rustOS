@@ -16,6 +16,7 @@ install:
 
 script:
   - bootimage build
+  - cargo test
 
 cache: cargo
 before_cache:
