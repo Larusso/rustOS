@@ -2,6 +2,8 @@
 #![no_main]
 
 extern crate volatile;
+extern crate lazy_static;
+extern crate spin;
 
 use core::panic::PanicInfo;
 mod vga_buffer;
@@ -13,7 +15,8 @@ fn panic(_info: &PanicInfo) -> ! {
 
 #[no_mangle]
 pub extern "C" fn _start() -> ! {
-    vga_buffer::print_something();
-
+    use core::fmt::Write;
+    vga_buffer::WRITER.lock().write_str("Welcome to RustOS").unwrap();
+    write!(vga_buffer::WRITER.lock(), ", version: {}", "0.1.0").unwrap();
     loop {}
 }
