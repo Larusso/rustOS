@@ -2,11 +2,13 @@
 #![cfg_attr(not(test), no_std)]
 #![cfg_attr(not(test), no_main)]
 
-extern crate volatile;
-extern crate lazy_static;
-extern crate spin;
+#[cfg(test)]
+extern crate array_init;
 #[cfg(test)]
 extern crate core;
+extern crate lazy_static;
+extern crate spin;
+extern crate volatile;
 
 use core::panic::PanicInfo;
 mod vga_buffer;
